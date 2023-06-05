@@ -2255,11 +2255,13 @@ class File(EObject):
         # URI is in the form of data/.../something/files/me so
         # guri = data/.../something
         guri = uri_grandparent(self._uri)
-
+        print("guri: ", guri)
         if not self._intf.select(guri).exists():
             self._intf.select(guri).insert(**datatypes)
 
         resource_id = self._intf.select(guri).id()
+        print("resource_id: ", resource_id)
+
         isFile = False
 
         # Cleanup the src and make sure it exists.
